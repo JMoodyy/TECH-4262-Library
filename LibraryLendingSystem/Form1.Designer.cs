@@ -40,7 +40,7 @@
             this.Phonetxt = new System.Windows.Forms.TextBox();
             this.Namelbl = new System.Windows.Forms.Label();
             this.Nametxt = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvMembers = new System.Windows.Forms.DataGridView();
             this.Searchbtn = new System.Windows.Forms.Button();
             this.Searchlbl = new System.Windows.Forms.Label();
             this.Searchtxt = new System.Windows.Forms.TextBox();
@@ -49,7 +49,7 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMembers)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -76,7 +76,7 @@
             this.tabPage1.Controls.Add(this.Phonetxt);
             this.tabPage1.Controls.Add(this.Namelbl);
             this.tabPage1.Controls.Add(this.Nametxt);
-            this.tabPage1.Controls.Add(this.dataGridView1);
+            this.tabPage1.Controls.Add(this.dgvMembers);
             this.tabPage1.Controls.Add(this.Searchbtn);
             this.tabPage1.Controls.Add(this.Searchlbl);
             this.tabPage1.Controls.Add(this.Searchtxt);
@@ -97,6 +97,7 @@
             this.Clearbtn.TabIndex = 16;
             this.Clearbtn.Text = "Clear ";
             this.Clearbtn.UseVisualStyleBackColor = true;
+            this.Clearbtn.Click += new System.EventHandler(this.Clearbtn_Click);
             // 
             // Deletebtn
             // 
@@ -106,6 +107,7 @@
             this.Deletebtn.TabIndex = 15;
             this.Deletebtn.Text = "Delete Member";
             this.Deletebtn.UseVisualStyleBackColor = true;
+            this.Deletebtn.Click += new System.EventHandler(this.Deletebtn_Click_1);
             // 
             // Updatebtn
             // 
@@ -115,6 +117,7 @@
             this.Updatebtn.TabIndex = 14;
             this.Updatebtn.Text = "Update Info";
             this.Updatebtn.UseVisualStyleBackColor = true;
+            this.Updatebtn.Click += new System.EventHandler(this.Updatebtn_Click);
             // 
             // Newbtn
             // 
@@ -124,6 +127,7 @@
             this.Newbtn.TabIndex = 12;
             this.Newbtn.Text = "New Member";
             this.Newbtn.UseVisualStyleBackColor = true;
+            this.Newbtn.Click += new System.EventHandler(this.Newbtn_Click);
             // 
             // Emaillbl
             // 
@@ -179,13 +183,14 @@
             this.Nametxt.Size = new System.Drawing.Size(183, 20);
             this.Nametxt.TabIndex = 7;
             // 
-            // dataGridView1
+            // dgvMembers
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(8, 54);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(279, 300);
-            this.dataGridView1.TabIndex = 5;
+            this.dgvMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMembers.Location = new System.Drawing.Point(8, 54);
+            this.dgvMembers.Name = "dgvMembers";
+            this.dgvMembers.Size = new System.Drawing.Size(279, 300);
+            this.dgvMembers.TabIndex = 5;
+            this.dgvMembers.SelectionChanged += new System.EventHandler(this.dgvMembers_SelectionChanged);
             // 
             // Searchbtn
             // 
@@ -195,6 +200,7 @@
             this.Searchbtn.TabIndex = 4;
             this.Searchbtn.Text = "Search";
             this.Searchbtn.UseVisualStyleBackColor = true;
+            this.Searchbtn.Click += new System.EventHandler(this.Searchbtn_Click);
             // 
             // Searchlbl
             // 
@@ -256,7 +262,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMembers)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -277,7 +283,7 @@
         private System.Windows.Forms.TextBox Phonetxt;
         private System.Windows.Forms.Label Namelbl;
         private System.Windows.Forms.TextBox Nametxt;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvMembers;
         private System.Windows.Forms.Button Updatebtn;
         private System.Windows.Forms.Button Newbtn;
         private System.Windows.Forms.Button Clearbtn;
