@@ -187,5 +187,183 @@ namespace LibraryLendingSystem
             Emailtxt.Clear();
         }
 
+        // START BOOK MANAGEMENT CODE
+        /*
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            LoadBooks();
+            dataGridBooks.ClearSelection();
+        }
+        */
+        private void LoadBooks()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = "SELECT Title, Author, Call Number, Avaliable Copies FROM Books";
+
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                dataGridBooks.DataSource = dt;
+            }
+        }
+
+        private int? GetSelectedBookNum()
+        {
+            if (dataGridBooks.CurrentRow == null)
+                return null;
+
+            object value = dataGridBooks.CurrentRow.Cells["Call Number"].Value;
+
+            if (value == null || value == DBNull.Value)
+                return null;
+
+            return Convert.ToInt32(value);
+        }
+        private void dataGridBooks_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridBooks.CurrentRow == null) return;
+
+            Titletxt.Text = dgvMembers.CurrentRow.Cells["Title"].Value?.ToString();
+            Phonetxt.Text = dgvMembers.CurrentRow.Cells["Author"].Value?.ToString();
+            Emailtxt.Text = dgvMembers.CurrentRow.Cells["Call Number"].Value?.ToString();
+        }
+
+        // BOOK TAB EVENTS
+
+        // Search Books
+        private void bksearchbtn_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = "SELECT * FROM Books WHERE Title LIKE @Title";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Book", "%" + Searchtxt.Text + "%");
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                dataGridBooks.DataSource = dt;
+            }
+        }
+
+        // Add New Book
+        private void Newbookbtn_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(Nametxt.Text))
+            {
+                MessageBox.Show("Title is required.");
+                return;
+            }
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = "INSERT INTO Books (Title, Author, Call Number, Available Copies) VALUES (@Title, @Author, @Call Number, @Available Copies)";
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                cmd.Parameters.AddWithValue("@Title", Titletxt.Text);
+                cmd.Parameters.AddWithValue("@Author", string.IsNullOrEmpty(Authortxt.Text) ? (object)DBNull.Value : Authortxt.Text);
+                cmd.Parameters.AddWithValue("@Call Number", string.IsNullOrEmpty(Callnumtxt.Text) ? (object)DBNull.Value : Callnumtxt.Text);
+                cmd.Parameters.AddWithValue("@Available Copies", string.IsNullOrEmpty(Numcopiestxt.Text) ? (object)DBNull.Value : Numcopiestxt.Text);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+
+            LoadMembers();
+            ClearMemberInputs();
+        }
+
+        // Delete Book
+        private void Dltbookbtn_Click(object sender, EventArgs e)
+        {
+            int? id = GetSelectedBookNum();
+            if (id == null)
+            {
+                MessageBox.Show("Select a book to delete.");
+                return;
+            }
+
+            var confirm = MessageBox.Show(
+                "Are you sure you want to delete this book?",
+                "Confirm Delete",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (confirm != DialogResult.Yes)
+                return;
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = "DELETE FROM Books WHERE Call Number=@Call Number";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Call Number", id.Value);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+
+            LoadBooks();
+            ClearBookInputs();
+        }
+
+        // Update Book Info
+        private void Updatebkbtn_Click(object sender, EventArgs e)
+        {
+            int? id = GetSelectedBookNum();
+            if (id == null)
+            {
+                MessageBox.Show("Select a book to update.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(Nametxt.Text))
+            {
+                MessageBox.Show("Title is required.");
+                return;
+            }
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = "UPDATE Books SET Title=@Title, Author=@Author, Available Copies=@Available Copies WHERE Call Number=@Call Number";
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                cmd.Parameters.AddWithValue("@Call Number", id.Value);
+                cmd.Parameters.AddWithValue("@Title", Titletxt.Text.Trim());
+                cmd.Parameters.AddWithValue("@Author",
+                    string.IsNullOrWhiteSpace(Authortxt.Text) ? (object)DBNull.Value : Authortxt.Text.Trim());
+                cmd.Parameters.AddWithValue("@Available Copies",
+                    string.IsNullOrWhiteSpace(Numcopiestxt.Text) ? (object)DBNull.Value : Numcopiestxt.Text.Trim());
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+
+            LoadMembers();
+        }
+
+        // Clear Book
+        private void Clearbooks_Click(object sender, EventArgs e)
+        {
+
+            ClearBookInputs();
+            dataGridBooks.ClearSelection();
+        }
+
+        private void ClearBookInputs()
+        {
+            Titletxt.Clear();
+            Authortxt.Clear();
+            Callnumtxt.Clear();
+            Numcopiestxt.Clear();
+        }
+
+        // Manage number of copies avaliable
+        // Increase/ decrease as books are loaned out
+        // Don't allow a loan if 0 copies avaliable
+
     }
 }
