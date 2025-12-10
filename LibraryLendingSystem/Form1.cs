@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -6,20 +6,18 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
-
-
-
-
 
 namespace LibraryLendingSystem
 {
     public partial class Form1 : Form
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["LibraryDB"].ConnectionString;
+
         public Form1()
         {
             InitializeComponent();
@@ -29,34 +27,40 @@ namespace LibraryLendingSystem
         {
             LoadMembers();
             dgvMembers.ClearSelection();
+
+            LoadBooks();
+            dgvBooks.ClearSelection();
+
+            LoadLoans();
+            dgvLoans.ClearSelection();
+
+            LoadLoanMembers();
+            LoadLoanBooks();
         }
 
+        // ===================== MEMBERS TAB =====================
         private void LoadMembers()
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 string query = "SELECT MemberId, Name, Phone, Email FROM Members";
-
                 SqlDataAdapter da = new SqlDataAdapter(query, conn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-
                 dgvMembers.DataSource = dt;
             }
         }
 
         private int? GetSelectedMemberId()
         {
-            if (dgvMembers.CurrentRow == null)
-                return null;
+            if (dgvMembers.CurrentRow == null) return null;
 
             object value = dgvMembers.CurrentRow.Cells["MemberId"].Value;
-
-            if (value == null || value == DBNull.Value)
-                return null;
+            if (value == null || value == DBNull.Value) return null;
 
             return Convert.ToInt32(value);
         }
+
         private void dgvMembers_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvMembers.CurrentRow == null) return;
@@ -78,11 +82,9 @@ namespace LibraryLendingSystem
             {
                 string query = "INSERT INTO Members (Name, Phone, Email) VALUES (@Name, @Phone, @Email)";
                 SqlCommand cmd = new SqlCommand(query, conn);
-
                 cmd.Parameters.AddWithValue("@Name", Nametxt.Text);
                 cmd.Parameters.AddWithValue("@Phone", string.IsNullOrEmpty(Phonetxt.Text) ? (object)DBNull.Value : Phonetxt.Text);
                 cmd.Parameters.AddWithValue("@Email", string.IsNullOrEmpty(Emailtxt.Text) ? (object)DBNull.Value : Emailtxt.Text);
-
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }
@@ -96,14 +98,12 @@ namespace LibraryLendingSystem
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 string query = "SELECT * FROM Members WHERE Name LIKE @Name";
-
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Name", "%" + Searchtxt.Text + "%");
 
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-
                 dgvMembers.DataSource = dt;
             }
         }
@@ -130,10 +130,8 @@ namespace LibraryLendingSystem
 
                 cmd.Parameters.AddWithValue("@MemberId", id.Value);
                 cmd.Parameters.AddWithValue("@Name", Nametxt.Text.Trim());
-                cmd.Parameters.AddWithValue("@Phone",
-                    string.IsNullOrWhiteSpace(Phonetxt.Text) ? (object)DBNull.Value : Phonetxt.Text.Trim());
-                cmd.Parameters.AddWithValue("@Email",
-                    string.IsNullOrWhiteSpace(Emailtxt.Text) ? (object)DBNull.Value : Emailtxt.Text.Trim());
+                cmd.Parameters.AddWithValue("@Phone", string.IsNullOrWhiteSpace(Phonetxt.Text) ? (object)DBNull.Value : Phonetxt.Text.Trim());
+                cmd.Parameters.AddWithValue("@Email", string.IsNullOrWhiteSpace(Emailtxt.Text) ? (object)DBNull.Value : Emailtxt.Text.Trim());
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
@@ -157,15 +155,13 @@ namespace LibraryLendingSystem
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning);
 
-            if (confirm != DialogResult.Yes)
-                return;
+            if (confirm != DialogResult.Yes) return;
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 string query = "DELETE FROM Members WHERE MemberId=@MemberId";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@MemberId", id.Value);
-
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }
@@ -187,100 +183,125 @@ namespace LibraryLendingSystem
             Emailtxt.Clear();
         }
 
-        // START BOOK MANAGEMENT CODE
-        /*
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            LoadBooks();
-            dataGridBooks.ClearSelection();
-        }
-        */
+        // ===================== BOOKS TAB =====================
         private void LoadBooks()
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string query = "SELECT Title, Author, Call Number, Avaliable Copies FROM Books";
-
+                string query = "SELECT BookId, Author, Title, ISBN, availablebooks, totalbooks FROM Books";
                 SqlDataAdapter da = new SqlDataAdapter(query, conn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-
-                dataGridBooks.DataSource = dt;
+                dgvBooks.DataSource = dt;
             }
         }
 
-        private int? GetSelectedBookNum()
+        private int? GetSelectedBookId()
         {
-            if (dataGridBooks.CurrentRow == null)
-                return null;
+            if (dgvBooks.CurrentRow == null) return null;
 
-            object value = dataGridBooks.CurrentRow.Cells["Call Number"].Value;
-
-            if (value == null || value == DBNull.Value)
-                return null;
+            object value = dgvBooks.CurrentRow.Cells["BookId"].Value;
+            if (value == null || value == DBNull.Value) return null;
 
             return Convert.ToInt32(value);
         }
-        private void dataGridBooks_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dataGridBooks.CurrentRow == null) return;
 
-            Titletxt.Text = dgvMembers.CurrentRow.Cells["Title"].Value?.ToString();
-            Phonetxt.Text = dgvMembers.CurrentRow.Cells["Author"].Value?.ToString();
-            Emailtxt.Text = dgvMembers.CurrentRow.Cells["Call Number"].Value?.ToString();
+        private void dgvBooks_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvBooks.CurrentRow == null) return;
+
+            Authortxt.Text = dgvBooks.CurrentRow.Cells["Author"].Value?.ToString();
+            Titletxt.Text = dgvBooks.CurrentRow.Cells["Title"].Value?.ToString();
+            ISBNtxt.Text = dgvBooks.CurrentRow.Cells["ISBN"].Value?.ToString();
+            Totaltxt.Text = dgvBooks.CurrentRow.Cells["totalbooks"].Value?.ToString();
         }
 
-        // BOOK TAB EVENTS
-
-        // Search Books
-        private void bksearchbtn_Click(object sender, EventArgs e)
+        private void NewBbtn_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            if (string.IsNullOrWhiteSpace(Authortxt.Text) || string.IsNullOrWhiteSpace(Titletxt.Text))
             {
-                string query = "SELECT * FROM Books WHERE Title LIKE @Title";
-
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@Book", "%" + Searchtxt.Text + "%");
-
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
-                dataGridBooks.DataSource = dt;
-            }
-        }
-
-        // Add New Book
-        private void Newbookbtn_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(Nametxt.Text))
-            {
-                MessageBox.Show("Title is required.");
+                MessageBox.Show("Author and Title are required.");
                 return;
             }
 
+            int total = 0;
+            int.TryParse(Totaltxt.Text, out total);
+            int available = total;
+
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string query = "INSERT INTO Books (Title, Author, Call Number, Available Copies) VALUES (@Title, @Author, @Call Number, @Available Copies)";
+                string query = "INSERT INTO Books (Author, Title, ISBN, totalbooks, availablebooks) " +
+                               "VALUES (@Author, @Title, @ISBN, @TotalBooks, @AvailableBooks)";
                 SqlCommand cmd = new SqlCommand(query, conn);
 
-                cmd.Parameters.AddWithValue("@Title", Titletxt.Text);
-                cmd.Parameters.AddWithValue("@Author", string.IsNullOrEmpty(Authortxt.Text) ? (object)DBNull.Value : Authortxt.Text);
-                cmd.Parameters.AddWithValue("@Call Number", string.IsNullOrEmpty(Callnumtxt.Text) ? (object)DBNull.Value : Callnumtxt.Text);
-                cmd.Parameters.AddWithValue("@Available Copies", string.IsNullOrEmpty(Numcopiestxt.Text) ? (object)DBNull.Value : Numcopiestxt.Text);
+                cmd.Parameters.AddWithValue("@Author", Authortxt.Text.Trim());
+                cmd.Parameters.AddWithValue("@Title", Titletxt.Text.Trim());
+                cmd.Parameters.AddWithValue("@ISBN", string.IsNullOrWhiteSpace(ISBNtxt.Text) ? (object)DBNull.Value : ISBNtxt.Text.Trim());
+                cmd.Parameters.AddWithValue("@TotalBooks", total);
+                cmd.Parameters.AddWithValue("@AvailableBooks", available);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }
 
-            LoadMembers();
-            ClearMemberInputs();
+            LoadBooks();
+            ClearBookInputs();
         }
 
-        // Delete Book
-        private void Dltbookbtn_Click(object sender, EventArgs e)
+        private void SearchBbtn_Click(object sender, EventArgs e)
         {
-            int? id = GetSelectedBookNum();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = "SELECT * FROM Books WHERE Title LIKE @Title";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Title", "%" + SearchBtxt.Text + "%");
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dgvBooks.DataSource = dt;
+            }
+        }
+
+        private void UpdateBbtn_Click(object sender, EventArgs e)
+        {
+            int? id = GetSelectedBookId();
+            if (id == null)
+            {
+                MessageBox.Show("Select a book to update.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(Titletxt.Text))
+            {
+                MessageBox.Show("A book title is required.");
+                return;
+            }
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = "UPDATE Books SET Author=@Author, Title=@Title, ISBN=@ISBN, Totalbooks=@Totalbooks WHERE BookId=@BookId";
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                cmd.Parameters.AddWithValue("@BookId", id.Value);
+                cmd.Parameters.AddWithValue("@Author", Authortxt.Text.Trim());
+                cmd.Parameters.AddWithValue("@Title", string.IsNullOrWhiteSpace(Titletxt.Text) ? (object)DBNull.Value : Titletxt.Text.Trim());
+                cmd.Parameters.AddWithValue("@ISBN", string.IsNullOrWhiteSpace(ISBNtxt.Text) ? (object)DBNull.Value : ISBNtxt.Text.Trim());
+
+                int total = 0;
+                int.TryParse(Totaltxt.Text, out total);
+                cmd.Parameters.AddWithValue("@Totalbooks", total);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+
+            LoadBooks();
+        }
+
+        private void DeleteBbtn_Click_1(object sender, EventArgs e)
+        {
+            int? id = GetSelectedBookId();
             if (id == null)
             {
                 MessageBox.Show("Select a book to delete.");
@@ -293,15 +314,13 @@ namespace LibraryLendingSystem
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning);
 
-            if (confirm != DialogResult.Yes)
-                return;
+            if (confirm != DialogResult.Yes) return;
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string query = "DELETE FROM Books WHERE Call Number=@Call Number";
+                string query = "DELETE FROM Books WHERE BookId=@BookId";
                 SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@Call Number", id.Value);
-
+                cmd.Parameters.AddWithValue("@BookId", id.Value);
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }
@@ -310,60 +329,226 @@ namespace LibraryLendingSystem
             ClearBookInputs();
         }
 
-        // Update Book Info
-        private void Updatebkbtn_Click(object sender, EventArgs e)
+        private void ClearBbtn_Click(object sender, EventArgs e)
         {
-            int? id = GetSelectedBookNum();
-            if (id == null)
-            {
-                MessageBox.Show("Select a book to update.");
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(Nametxt.Text))
-            {
-                MessageBox.Show("Title is required.");
-                return;
-            }
-
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                string query = "UPDATE Books SET Title=@Title, Author=@Author, Available Copies=@Available Copies WHERE Call Number=@Call Number";
-                SqlCommand cmd = new SqlCommand(query, conn);
-
-                cmd.Parameters.AddWithValue("@Call Number", id.Value);
-                cmd.Parameters.AddWithValue("@Title", Titletxt.Text.Trim());
-                cmd.Parameters.AddWithValue("@Author",
-                    string.IsNullOrWhiteSpace(Authortxt.Text) ? (object)DBNull.Value : Authortxt.Text.Trim());
-                cmd.Parameters.AddWithValue("@Available Copies",
-                    string.IsNullOrWhiteSpace(Numcopiestxt.Text) ? (object)DBNull.Value : Numcopiestxt.Text.Trim());
-
-                conn.Open();
-                cmd.ExecuteNonQuery();
-            }
-
-            LoadMembers();
-        }
-
-        // Clear Book
-        private void Clearbooks_Click(object sender, EventArgs e)
-        {
-
             ClearBookInputs();
-            dataGridBooks.ClearSelection();
+            dgvBooks.ClearSelection();
         }
 
         private void ClearBookInputs()
         {
-            Titletxt.Clear();
             Authortxt.Clear();
-            Callnumtxt.Clear();
-            Numcopiestxt.Clear();
+            Titletxt.Clear();
+            ISBNtxt.Clear();
+            Totaltxt.Clear();
+        }
+        //=====================Loan Section=================
+
+        private void LoadLoans()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = @"
+            SELECT 
+                Loans.LoanID,
+                Loans.MemberId,
+                Loans.BookId,
+                Members.Name AS MemberName,
+                Books.Title AS BookTitle,
+                Loans.LoanDate,
+                Loans.DueDate
+            FROM Loans
+            JOIN Members ON Loans.MemberId = Members.MemberId
+            JOIN Books   ON Loans.BookId = Books.BookId";
+
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                dgvLoans.DataSource = dt;
+
+                dgvLoans.Columns["MemberId"].Visible = false;
+                dgvLoans.Columns["BookId"].Visible = false;
+            }
+        }
+        private void LoadLoanMembers()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = "SELECT MemberId, Name FROM Members ORDER BY Name";
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                Namecb.DisplayMember = "Name";
+                Namecb.ValueMember = "MemberId";
+                Namecb.DataSource = dt;
+                Namecb.SelectedIndex = -1;
+            }
+        }
+        private void LoadLoanBooks()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = "SELECT BookId, Title FROM Books ORDER BY Title";
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                Titlecb.DisplayMember = "Title";
+                Titlecb.ValueMember = "BookId";
+                Titlecb.DataSource = dt;
+                Titlecb.SelectedIndex = -1;
+            }
         }
 
-        // Manage number of copies avaliable
-        // Increase/ decrease as books are loaned out
-        // Don't allow a loan if 0 copies avaliable
+        private int? GetSelectedLoanId()
+        {
+            if (dgvLoans.CurrentRow == null) return null;
 
+            object value = dgvLoans.CurrentRow.Cells["LoanID"].Value;
+            if (value == null || value == DBNull.Value) return null;
+
+            return Convert.ToInt32(value);
+        }
+
+        private void dgvLoans_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvLoans.CurrentRow == null) return;
+
+
+            if (dgvLoans.CurrentRow.Cells["MemberId"].Value != DBNull.Value)
+            {
+                int memberId = Convert.ToInt32(dgvLoans.CurrentRow.Cells["MemberId"].Value);
+                Namecb.SelectedValue = memberId;
+            }
+
+            if (dgvLoans.CurrentRow.Cells["BookId"].Value != DBNull.Value)
+            {
+                int bookId = Convert.ToInt32(dgvLoans.CurrentRow.Cells["BookId"].Value);
+                Titlecb.SelectedValue = bookId;
+            }
+
+
+            if (dgvLoans.CurrentRow.Cells["LoanDate"].Value != DBNull.Value)
+                Borrowdtp.Value = Convert.ToDateTime(dgvLoans.CurrentRow.Cells["LoanDate"].Value);
+
+            if (dgvLoans.CurrentRow.Cells["DueDate"].Value != DBNull.Value)
+                Duedtp.Value = Convert.ToDateTime(dgvLoans.CurrentRow.Cells["DueDate"].Value);
+
+            if (dgvLoans.CurrentRow.Cells["BookId"].Value != DBNull.Value)
+            {
+                int bookId = Convert.ToInt32(dgvLoans.CurrentRow.Cells["BookId"].Value);
+
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    string query = @"SELECT Title, totalbooks, availablebooks 
+                         FROM Books 
+                         WHERE BookId = @BookId";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@BookId", bookId);
+
+                    conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        Btitlelbl.Text = reader["Title"].ToString();
+                        Tbooklbl.Text =  reader["TotalBooks"].ToString();
+                        ABookslbl.Text = reader["AvailableBooks"].ToString();
+                    }
+                }
+            }
+        }
+
+        private void Loanbtn_Click(object sender, EventArgs e)
+        {
+            if (Namecb.SelectedIndex == -1 || Titlecb.SelectedIndex == -1)
+            {
+                MessageBox.Show("Select a member and a book.");
+                return;
+            }
+
+            int memberId = (int)Namecb.SelectedValue;
+            int bookId = (int)Titlecb.SelectedValue;
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+               
+                string query = @"INSERT INTO Loans (MemberId, BookId, LoanDate, DueDate)
+                         VALUES (@MemberId, @BookId, @LoanDate, @DueDate)";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@MemberId", memberId);
+                cmd.Parameters.AddWithValue("@BookId", bookId);
+                cmd.Parameters.AddWithValue("@LoanDate", Borrowdtp.Value.Date);
+                cmd.Parameters.AddWithValue("@DueDate", Duedtp.Value.Date);
+                cmd.ExecuteNonQuery();
+
+                
+                string updateAvailability = "UPDATE Books SET AvailableBooks = AvailableBooks - 1 WHERE BookID = @BookID";
+                SqlCommand updateCmd = new SqlCommand(updateAvailability, conn);
+                updateCmd.Parameters.AddWithValue("@BookID", bookId);
+                updateCmd.ExecuteNonQuery();   
+            }
+
+            LoadLoans();
+            LoadBooks();   
+            ClearLoanInputs();
+        }
+
+        private void Returnbtn_Click(object sender, EventArgs e)
+        {
+            int? loanId = GetSelectedLoanId();
+            if (loanId == null)
+            {
+                MessageBox.Show("Select a loan to Return.");
+                return;
+            }
+
+            int bookId = Convert.ToInt32(dgvLoans.CurrentRow.Cells["BookID"].Value);
+
+            var confirm = MessageBox.Show(
+                "Are you sure you want to return this loan?",
+                "Confirm Return",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (confirm != DialogResult.Yes) return;
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                
+                string updateAvailability = "UPDATE Books SET AvailableBooks = AvailableBooks + 1 WHERE BookID = @BookID";
+                SqlCommand updateCmd = new SqlCommand(updateAvailability, conn);
+                updateCmd.Parameters.AddWithValue("@BookID", bookId);
+                updateCmd.ExecuteNonQuery();  
+
+                
+                string query = "DELETE FROM Loans WHERE LoanID=@LoanID";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@LoanID", loanId.Value);
+                cmd.ExecuteNonQuery();
+            }
+
+            LoadLoans();
+            LoadBooks();   
+            ClearLoanInputs();
+        }
+
+
+        private void ClearLoanInputs()
+        {
+            Namecb.SelectedIndex = -1;
+            Titlecb.SelectedIndex = -1;
+
+            
+            Borrowdtp.Value = DateTime.Today;
+            Duedtp.Value = DateTime.Today;
+        }
     }
 }
