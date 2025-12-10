@@ -487,9 +487,8 @@
             this.Tbooklbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tbooklbl.Location = new System.Drawing.Point(452, 214);
             this.Tbooklbl.Name = "Tbooklbl";
-            this.Tbooklbl.Size = new System.Drawing.Size(83, 17);
+            this.Tbooklbl.Size = new System.Drawing.Size(0, 17);
             this.Tbooklbl.TabIndex = 43;
-            this.Tbooklbl.Text = "Total Books";
             // 
             // ABookslbl
             // 
@@ -497,9 +496,8 @@
             this.ABookslbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ABookslbl.Location = new System.Drawing.Point(452, 242);
             this.ABookslbl.Name = "ABookslbl";
-            this.ABookslbl.Size = new System.Drawing.Size(108, 17);
+            this.ABookslbl.Size = new System.Drawing.Size(0, 17);
             this.ABookslbl.TabIndex = 42;
-            this.ABookslbl.Text = "Available Books";
             // 
             // Btitlelbl
             // 
@@ -507,9 +505,8 @@
             this.Btitlelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btitlelbl.Location = new System.Drawing.Point(452, 187);
             this.Btitlelbl.Name = "Btitlelbl";
-            this.Btitlelbl.Size = new System.Drawing.Size(71, 17);
+            this.Btitlelbl.Size = new System.Drawing.Size(0, 17);
             this.Btitlelbl.TabIndex = 41;
-            this.Btitlelbl.Text = "Book Title";
             // 
             // Balancebtn
             // 
