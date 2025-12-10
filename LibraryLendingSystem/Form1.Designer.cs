@@ -1,4 +1,4 @@
-﻿namespace LibraryLendingSystem
+namespace LibraryLendingSystem
 {
     partial class Form1
     {
@@ -45,42 +45,62 @@
             this.Searchlbl = new System.Windows.Forms.Label();
             this.Searchtxt = new System.Windows.Forms.TextBox();
             this.Memberslbl = new System.Windows.Forms.Label();
-            this.bookstab = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.Clearbooks = new System.Windows.Forms.Button();
-            this.Dltbookbtn = new System.Windows.Forms.Button();
-            this.Updatebkbtn = new System.Windows.Forms.Button();
-            this.Newbookbtn = new System.Windows.Forms.Button();
-            this.Callnumlbl = new System.Windows.Forms.Label();
-            this.Callnumtxt = new System.Windows.Forms.TextBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Totaltxt = new System.Windows.Forms.TextBox();
+            this.ClearBbtn = new System.Windows.Forms.Button();
+            this.DeleteBbtn = new System.Windows.Forms.Button();
+            this.UpdateBbtn = new System.Windows.Forms.Button();
+            this.NewBbtn = new System.Windows.Forms.Button();
+            this.ISBNlbl = new System.Windows.Forms.Label();
+            this.ISBNtxt = new System.Windows.Forms.TextBox();
+            this.Titlelbl = new System.Windows.Forms.Label();
+            this.Titletxt = new System.Windows.Forms.TextBox();
             this.Authorlbl = new System.Windows.Forms.Label();
             this.Authortxt = new System.Windows.Forms.TextBox();
-            this.titlelbl = new System.Windows.Forms.Label();
-            this.Titletxt = new System.Windows.Forms.TextBox();
-            this.dataGridBooks = new System.Windows.Forms.DataGridView();
-            this.bksearchbtn = new System.Windows.Forms.Button();
-            this.Searchlbl2 = new System.Windows.Forms.Label();
-            this.booksearch = new System.Windows.Forms.TextBox();
-            this.bookslbl = new System.Windows.Forms.Label();
-            this.Numcopieslbl = new System.Windows.Forms.Label();
-            this.Numcopiestxt = new System.Windows.Forms.TextBox();
+            this.dgvBooks = new System.Windows.Forms.DataGridView();
+            this.SearchBbtn = new System.Windows.Forms.Button();
+            this.SearchBlbl = new System.Windows.Forms.Label();
+            this.SearchBtxt = new System.Windows.Forms.TextBox();
+            this.Bookslbl = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.Tbooklbl = new System.Windows.Forms.Label();
+            this.ABookslbl = new System.Windows.Forms.Label();
+            this.Btitlelbl = new System.Windows.Forms.Label();
+            this.Balancebtn = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.Duedtp = new System.Windows.Forms.DateTimePicker();
+            this.Borrowdtp = new System.Windows.Forms.DateTimePicker();
+            this.Titlecb = new System.Windows.Forms.ComboBox();
+            this.Namecb = new System.Windows.Forms.ComboBox();
+            this.Duelbl = new System.Windows.Forms.Label();
+            this.Returnbtn = new System.Windows.Forms.Button();
+            this.Loanbtn = new System.Windows.Forms.Button();
+            this.Borrowlbl = new System.Windows.Forms.Label();
+            this.TitleBlbl = new System.Windows.Forms.Label();
+            this.NameBlbl = new System.Windows.Forms.Label();
+            this.dgvLoans = new System.Windows.Forms.DataGridView();
+            this.Loanslbl = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMembers)).BeginInit();
-            this.bookstab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridBooks)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBooks)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLoans)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.bookstab);
+            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1051, 539);
+            this.tabControl1.Size = new System.Drawing.Size(788, 438);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -101,21 +121,19 @@
             this.tabPage1.Controls.Add(this.Searchlbl);
             this.tabPage1.Controls.Add(this.Searchtxt);
             this.tabPage1.Controls.Add(this.Memberslbl);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage1.Size = new System.Drawing.Size(1043, 510);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(780, 412);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Members";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // Clearbtn
             // 
-            this.Clearbtn.Location = new System.Drawing.Point(631, 240);
-            this.Clearbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Clearbtn.Location = new System.Drawing.Point(473, 195);
             this.Clearbtn.Name = "Clearbtn";
-            this.Clearbtn.Size = new System.Drawing.Size(140, 28);
+            this.Clearbtn.Size = new System.Drawing.Size(105, 23);
             this.Clearbtn.TabIndex = 16;
             this.Clearbtn.Text = "Clear ";
             this.Clearbtn.UseVisualStyleBackColor = true;
@@ -123,10 +141,9 @@
             // 
             // Deletebtn
             // 
-            this.Deletebtn.Location = new System.Drawing.Point(631, 190);
-            this.Deletebtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Deletebtn.Location = new System.Drawing.Point(473, 154);
             this.Deletebtn.Name = "Deletebtn";
-            this.Deletebtn.Size = new System.Drawing.Size(140, 28);
+            this.Deletebtn.Size = new System.Drawing.Size(105, 23);
             this.Deletebtn.TabIndex = 15;
             this.Deletebtn.Text = "Delete Member";
             this.Deletebtn.UseVisualStyleBackColor = true;
@@ -134,10 +151,9 @@
             // 
             // Updatebtn
             // 
-            this.Updatebtn.Location = new System.Drawing.Point(437, 240);
-            this.Updatebtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Updatebtn.Location = new System.Drawing.Point(328, 195);
             this.Updatebtn.Name = "Updatebtn";
-            this.Updatebtn.Size = new System.Drawing.Size(140, 28);
+            this.Updatebtn.Size = new System.Drawing.Size(105, 23);
             this.Updatebtn.TabIndex = 14;
             this.Updatebtn.Text = "Update Info";
             this.Updatebtn.UseVisualStyleBackColor = true;
@@ -145,10 +161,9 @@
             // 
             // Newbtn
             // 
-            this.Newbtn.Location = new System.Drawing.Point(437, 190);
-            this.Newbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Newbtn.Location = new System.Drawing.Point(328, 154);
             this.Newbtn.Name = "Newbtn";
-            this.Newbtn.Size = new System.Drawing.Size(140, 28);
+            this.Newbtn.Size = new System.Drawing.Size(105, 23);
             this.Newbtn.TabIndex = 12;
             this.Newbtn.Text = "New Member";
             this.Newbtn.UseVisualStyleBackColor = true;
@@ -158,79 +173,70 @@
             // 
             this.Emaillbl.AutoSize = true;
             this.Emaillbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Emaillbl.Location = new System.Drawing.Point(433, 137);
-            this.Emaillbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Emaillbl.Location = new System.Drawing.Point(325, 111);
             this.Emaillbl.Name = "Emaillbl";
-            this.Emaillbl.Size = new System.Drawing.Size(56, 20);
+            this.Emaillbl.Size = new System.Drawing.Size(46, 17);
             this.Emaillbl.TabIndex = 10;
             this.Emaillbl.Text = "Email:";
             // 
             // Emailtxt
             // 
             this.Emailtxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Emailtxt.Location = new System.Drawing.Point(523, 133);
-            this.Emailtxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Emailtxt.Location = new System.Drawing.Point(392, 108);
             this.Emailtxt.Name = "Emailtxt";
-            this.Emailtxt.Size = new System.Drawing.Size(243, 22);
+            this.Emailtxt.Size = new System.Drawing.Size(183, 20);
             this.Emailtxt.TabIndex = 11;
             // 
             // Phonelbl
             // 
             this.Phonelbl.AutoSize = true;
             this.Phonelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Phonelbl.Location = new System.Drawing.Point(433, 100);
-            this.Phonelbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Phonelbl.Location = new System.Drawing.Point(325, 81);
             this.Phonelbl.Name = "Phonelbl";
-            this.Phonelbl.Size = new System.Drawing.Size(61, 20);
+            this.Phonelbl.Size = new System.Drawing.Size(53, 17);
             this.Phonelbl.TabIndex = 8;
             this.Phonelbl.Text = "Phone:";
             // 
             // Phonetxt
             // 
             this.Phonetxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Phonetxt.Location = new System.Drawing.Point(523, 96);
-            this.Phonetxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Phonetxt.Location = new System.Drawing.Point(392, 78);
             this.Phonetxt.Name = "Phonetxt";
-            this.Phonetxt.Size = new System.Drawing.Size(243, 22);
+            this.Phonetxt.Size = new System.Drawing.Size(183, 20);
             this.Phonetxt.TabIndex = 9;
             // 
             // Namelbl
             // 
             this.Namelbl.AutoSize = true;
             this.Namelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Namelbl.Location = new System.Drawing.Point(433, 66);
-            this.Namelbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Namelbl.Location = new System.Drawing.Point(325, 54);
             this.Namelbl.Name = "Namelbl";
-            this.Namelbl.Size = new System.Drawing.Size(58, 20);
+            this.Namelbl.Size = new System.Drawing.Size(49, 17);
             this.Namelbl.TabIndex = 6;
             this.Namelbl.Text = "Name:";
             // 
             // Nametxt
             // 
             this.Nametxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Nametxt.Location = new System.Drawing.Point(523, 63);
-            this.Nametxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Nametxt.Location = new System.Drawing.Point(392, 51);
             this.Nametxt.Name = "Nametxt";
-            this.Nametxt.Size = new System.Drawing.Size(243, 22);
+            this.Nametxt.Size = new System.Drawing.Size(183, 20);
             this.Nametxt.TabIndex = 7;
             // 
             // dgvMembers
             // 
             this.dgvMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMembers.Location = new System.Drawing.Point(11, 66);
-            this.dgvMembers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvMembers.Location = new System.Drawing.Point(8, 54);
             this.dgvMembers.Name = "dgvMembers";
-            this.dgvMembers.RowHeadersWidth = 51;
-            this.dgvMembers.Size = new System.Drawing.Size(372, 369);
+            this.dgvMembers.Size = new System.Drawing.Size(279, 300);
             this.dgvMembers.TabIndex = 5;
             this.dgvMembers.SelectionChanged += new System.EventHandler(this.dgvMembers_SelectionChanged);
             // 
             // Searchbtn
             // 
-            this.Searchbtn.Location = new System.Drawing.Point(239, 31);
-            this.Searchbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Searchbtn.Location = new System.Drawing.Point(220, 25);
             this.Searchbtn.Name = "Searchbtn";
-            this.Searchbtn.Size = new System.Drawing.Size(100, 28);
+            this.Searchbtn.Size = new System.Drawing.Size(75, 23);
             this.Searchbtn.TabIndex = 4;
             this.Searchbtn.Text = "Search";
             this.Searchbtn.UseVisualStyleBackColor = true;
@@ -240,256 +246,424 @@
             // 
             this.Searchlbl.AutoSize = true;
             this.Searchlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Searchlbl.Location = new System.Drawing.Point(8, 38);
-            this.Searchlbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Searchlbl.Location = new System.Drawing.Point(6, 31);
             this.Searchlbl.Name = "Searchlbl";
-            this.Searchlbl.Size = new System.Drawing.Size(72, 20);
+            this.Searchlbl.Size = new System.Drawing.Size(102, 17);
             this.Searchlbl.TabIndex = 2;
-            this.Searchlbl.Text = "Search: ";
+            this.Searchlbl.Text = "Search Name: ";
             // 
             // Searchtxt
             // 
             this.Searchtxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Searchtxt.Location = new System.Drawing.Point(97, 34);
-            this.Searchtxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Searchtxt.Location = new System.Drawing.Point(114, 28);
             this.Searchtxt.Name = "Searchtxt";
-            this.Searchtxt.Size = new System.Drawing.Size(133, 22);
+            this.Searchtxt.Size = new System.Drawing.Size(100, 20);
             this.Searchtxt.TabIndex = 3;
             // 
             // Memberslbl
             // 
             this.Memberslbl.AutoSize = true;
             this.Memberslbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Memberslbl.Location = new System.Drawing.Point(4, 4);
-            this.Memberslbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Memberslbl.Location = new System.Drawing.Point(3, 3);
             this.Memberslbl.Name = "Memberslbl";
-            this.Memberslbl.Size = new System.Drawing.Size(119, 29);
+            this.Memberslbl.Size = new System.Drawing.Size(94, 25);
             this.Memberslbl.TabIndex = 0;
             this.Memberslbl.Text = "Members";
             // 
-            // bookstab
+            // tabPage2
             // 
-            this.bookstab.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.bookstab.Controls.Add(this.Numcopieslbl);
-            this.bookstab.Controls.Add(this.Numcopiestxt);
-            this.bookstab.Controls.Add(this.Clearbooks);
-            this.bookstab.Controls.Add(this.Dltbookbtn);
-            this.bookstab.Controls.Add(this.Updatebkbtn);
-            this.bookstab.Controls.Add(this.Newbookbtn);
-            this.bookstab.Controls.Add(this.Callnumlbl);
-            this.bookstab.Controls.Add(this.Callnumtxt);
-            this.bookstab.Controls.Add(this.Authorlbl);
-            this.bookstab.Controls.Add(this.Authortxt);
-            this.bookstab.Controls.Add(this.titlelbl);
-            this.bookstab.Controls.Add(this.Titletxt);
-            this.bookstab.Controls.Add(this.dataGridBooks);
-            this.bookstab.Controls.Add(this.bksearchbtn);
-            this.bookstab.Controls.Add(this.Searchlbl2);
-            this.bookstab.Controls.Add(this.booksearch);
-            this.bookstab.Controls.Add(this.bookslbl);
-            this.bookstab.Location = new System.Drawing.Point(4, 25);
-            this.bookstab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.bookstab.Name = "bookstab";
-            this.bookstab.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.bookstab.Size = new System.Drawing.Size(1043, 510);
-            this.bookstab.TabIndex = 1;
-            this.bookstab.Text = "Books";
-            this.bookstab.UseVisualStyleBackColor = true;
+            this.tabPage2.Controls.Add(this.label1);
+            this.tabPage2.Controls.Add(this.Totaltxt);
+            this.tabPage2.Controls.Add(this.ClearBbtn);
+            this.tabPage2.Controls.Add(this.DeleteBbtn);
+            this.tabPage2.Controls.Add(this.UpdateBbtn);
+            this.tabPage2.Controls.Add(this.NewBbtn);
+            this.tabPage2.Controls.Add(this.ISBNlbl);
+            this.tabPage2.Controls.Add(this.ISBNtxt);
+            this.tabPage2.Controls.Add(this.Titlelbl);
+            this.tabPage2.Controls.Add(this.Titletxt);
+            this.tabPage2.Controls.Add(this.Authorlbl);
+            this.tabPage2.Controls.Add(this.Authortxt);
+            this.tabPage2.Controls.Add(this.dgvBooks);
+            this.tabPage2.Controls.Add(this.SearchBbtn);
+            this.tabPage2.Controls.Add(this.SearchBlbl);
+            this.tabPage2.Controls.Add(this.SearchBtxt);
+            this.tabPage2.Controls.Add(this.Bookslbl);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(780, 412);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Books";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
+            // label1
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage3.Size = new System.Drawing.Size(1043, 510);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Loans";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(479, 146);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(87, 17);
+            this.label1.TabIndex = 34;
+            this.label1.Text = "Total Books:";
             // 
-            // Clearbooks
+            // Totaltxt
             // 
-            this.Clearbooks.Location = new System.Drawing.Point(624, 283);
-            this.Clearbooks.Margin = new System.Windows.Forms.Padding(4);
-            this.Clearbooks.Name = "Clearbooks";
-            this.Clearbooks.Size = new System.Drawing.Size(140, 28);
-            this.Clearbooks.TabIndex = 31;
-            this.Clearbooks.Text = "Clear ";
-            this.Clearbooks.UseVisualStyleBackColor = true;
-            this.Clearbooks.Click += new System.EventHandler(this.Clearbooks_Click);
+            this.Totaltxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Totaltxt.Location = new System.Drawing.Point(579, 143);
+            this.Totaltxt.Name = "Totaltxt";
+            this.Totaltxt.Size = new System.Drawing.Size(183, 20);
+            this.Totaltxt.TabIndex = 35;
             // 
-            // Dltbookbtn
+            // ClearBbtn
             // 
-            this.Dltbookbtn.Location = new System.Drawing.Point(624, 233);
-            this.Dltbookbtn.Margin = new System.Windows.Forms.Padding(4);
-            this.Dltbookbtn.Name = "Dltbookbtn";
-            this.Dltbookbtn.Size = new System.Drawing.Size(140, 28);
-            this.Dltbookbtn.TabIndex = 30;
-            this.Dltbookbtn.Text = "Delete Book";
-            this.Dltbookbtn.UseVisualStyleBackColor = true;
-            this.Dltbookbtn.Click += new System.EventHandler(this.Dltbookbtn_Click);
+            this.ClearBbtn.Location = new System.Drawing.Point(660, 225);
+            this.ClearBbtn.Name = "ClearBbtn";
+            this.ClearBbtn.Size = new System.Drawing.Size(105, 23);
+            this.ClearBbtn.TabIndex = 33;
+            this.ClearBbtn.Text = "Clear ";
+            this.ClearBbtn.UseVisualStyleBackColor = true;
             // 
-            // Updatebkbtn
+            // DeleteBbtn
             // 
-            this.Updatebkbtn.Location = new System.Drawing.Point(430, 283);
-            this.Updatebkbtn.Margin = new System.Windows.Forms.Padding(4);
-            this.Updatebkbtn.Name = "Updatebkbtn";
-            this.Updatebkbtn.Size = new System.Drawing.Size(140, 28);
-            this.Updatebkbtn.TabIndex = 29;
-            this.Updatebkbtn.Text = "Update Book Info";
-            this.Updatebkbtn.UseVisualStyleBackColor = true;
-            this.Updatebkbtn.Click += new System.EventHandler(this.Updatebkbtn_Click);
+            this.DeleteBbtn.Location = new System.Drawing.Point(660, 184);
+            this.DeleteBbtn.Name = "DeleteBbtn";
+            this.DeleteBbtn.Size = new System.Drawing.Size(105, 23);
+            this.DeleteBbtn.TabIndex = 32;
+            this.DeleteBbtn.Text = "Delete Book";
+            this.DeleteBbtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.DeleteBbtn.UseVisualStyleBackColor = true;
             // 
-            // Newbookbtn
+            // UpdateBbtn
             // 
-            this.Newbookbtn.Location = new System.Drawing.Point(430, 233);
-            this.Newbookbtn.Margin = new System.Windows.Forms.Padding(4);
-            this.Newbookbtn.Name = "Newbookbtn";
-            this.Newbookbtn.Size = new System.Drawing.Size(140, 28);
-            this.Newbookbtn.TabIndex = 28;
-            this.Newbookbtn.Text = "New Book";
-            this.Newbookbtn.UseVisualStyleBackColor = true;
-            this.Newbookbtn.Click += new System.EventHandler(this.Newbookbtn_Click);
+            this.UpdateBbtn.Location = new System.Drawing.Point(515, 225);
+            this.UpdateBbtn.Name = "UpdateBbtn";
+            this.UpdateBbtn.Size = new System.Drawing.Size(105, 23);
+            this.UpdateBbtn.TabIndex = 31;
+            this.UpdateBbtn.Text = "Update Book";
+            this.UpdateBbtn.UseVisualStyleBackColor = true;
             // 
-            // Callnumlbl
+            // NewBbtn
             // 
-            this.Callnumlbl.AutoSize = true;
-            this.Callnumlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Callnumlbl.Location = new System.Drawing.Point(408, 134);
-            this.Callnumlbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Callnumlbl.Name = "Callnumlbl";
-            this.Callnumlbl.Size = new System.Drawing.Size(107, 20);
-            this.Callnumlbl.TabIndex = 26;
-            this.Callnumlbl.Text = "Call Number:\r\n";
+            this.NewBbtn.Location = new System.Drawing.Point(515, 184);
+            this.NewBbtn.Name = "NewBbtn";
+            this.NewBbtn.Size = new System.Drawing.Size(105, 23);
+            this.NewBbtn.TabIndex = 30;
+            this.NewBbtn.Text = "New Book";
+            this.NewBbtn.UseVisualStyleBackColor = true;
             // 
-            // Callnumtxt
+            // ISBNlbl
             // 
-            this.Callnumtxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Callnumtxt.Location = new System.Drawing.Point(566, 132);
-            this.Callnumtxt.Margin = new System.Windows.Forms.Padding(4);
-            this.Callnumtxt.Name = "Callnumtxt";
-            this.Callnumtxt.Size = new System.Drawing.Size(243, 22);
-            this.Callnumtxt.TabIndex = 27;
+            this.ISBNlbl.AutoSize = true;
+            this.ISBNlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ISBNlbl.Location = new System.Drawing.Point(523, 120);
+            this.ISBNlbl.Name = "ISBNlbl";
+            this.ISBNlbl.Size = new System.Drawing.Size(43, 17);
+            this.ISBNlbl.TabIndex = 28;
+            this.ISBNlbl.Text = "ISBN:";
+            // 
+            // ISBNtxt
+            // 
+            this.ISBNtxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ISBNtxt.Location = new System.Drawing.Point(579, 117);
+            this.ISBNtxt.Name = "ISBNtxt";
+            this.ISBNtxt.Size = new System.Drawing.Size(183, 20);
+            this.ISBNtxt.TabIndex = 29;
+            // 
+            // Titlelbl
+            // 
+            this.Titlelbl.AutoSize = true;
+            this.Titlelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Titlelbl.Location = new System.Drawing.Point(527, 90);
+            this.Titlelbl.Name = "Titlelbl";
+            this.Titlelbl.Size = new System.Drawing.Size(39, 17);
+            this.Titlelbl.TabIndex = 26;
+            this.Titlelbl.Text = "Title:";
+            // 
+            // Titletxt
+            // 
+            this.Titletxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Titletxt.Location = new System.Drawing.Point(579, 87);
+            this.Titletxt.Name = "Titletxt";
+            this.Titletxt.Size = new System.Drawing.Size(183, 20);
+            this.Titletxt.TabIndex = 27;
             // 
             // Authorlbl
             // 
             this.Authorlbl.AutoSize = true;
             this.Authorlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Authorlbl.Location = new System.Drawing.Point(408, 98);
-            this.Authorlbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Authorlbl.Location = new System.Drawing.Point(512, 63);
             this.Authorlbl.Name = "Authorlbl";
-            this.Authorlbl.Size = new System.Drawing.Size(63, 20);
+            this.Authorlbl.Size = new System.Drawing.Size(54, 17);
             this.Authorlbl.TabIndex = 24;
             this.Authorlbl.Text = "Author:";
             // 
             // Authortxt
             // 
             this.Authortxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Authortxt.Location = new System.Drawing.Point(566, 95);
-            this.Authortxt.Margin = new System.Windows.Forms.Padding(4);
+            this.Authortxt.Location = new System.Drawing.Point(579, 60);
             this.Authortxt.Name = "Authortxt";
-            this.Authortxt.Size = new System.Drawing.Size(243, 22);
+            this.Authortxt.Size = new System.Drawing.Size(183, 20);
             this.Authortxt.TabIndex = 25;
             // 
-            // titlelbl
+            // dgvBooks
             // 
-            this.titlelbl.AutoSize = true;
-            this.titlelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titlelbl.Location = new System.Drawing.Point(408, 64);
-            this.titlelbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.titlelbl.Name = "titlelbl";
-            this.titlelbl.Size = new System.Drawing.Size(46, 20);
-            this.titlelbl.TabIndex = 22;
-            this.titlelbl.Text = "Title:";
+            this.dgvBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBooks.Location = new System.Drawing.Point(8, 57);
+            this.dgvBooks.Name = "dgvBooks";
+            this.dgvBooks.Size = new System.Drawing.Size(324, 300);
+            this.dgvBooks.TabIndex = 23;
+            this.dgvBooks.SelectionChanged += new System.EventHandler(this.dgvBooks_SelectionChanged);
             // 
-            // Titletxt
+            // SearchBbtn
             // 
-            this.Titletxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Titletxt.Location = new System.Drawing.Point(566, 62);
-            this.Titletxt.Margin = new System.Windows.Forms.Padding(4);
-            this.Titletxt.Name = "Titletxt";
-            this.Titletxt.Size = new System.Drawing.Size(243, 22);
-            this.Titletxt.TabIndex = 23;
+            this.SearchBbtn.Location = new System.Drawing.Point(210, 28);
+            this.SearchBbtn.Name = "SearchBbtn";
+            this.SearchBbtn.Size = new System.Drawing.Size(75, 23);
+            this.SearchBbtn.TabIndex = 22;
+            this.SearchBbtn.Text = "Search";
+            this.SearchBbtn.UseVisualStyleBackColor = true;
             // 
-            // dataGridBooks
+            // SearchBlbl
             // 
-            this.dataGridBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridBooks.Location = new System.Drawing.Point(10, 65);
-            this.dataGridBooks.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridBooks.Name = "dataGridBooks";
-            this.dataGridBooks.RowHeadersWidth = 51;
-            this.dataGridBooks.Size = new System.Drawing.Size(372, 369);
-            this.dataGridBooks.TabIndex = 21;
+            this.SearchBlbl.AutoSize = true;
+            this.SearchBlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchBlbl.Location = new System.Drawing.Point(6, 34);
+            this.SearchBlbl.Name = "SearchBlbl";
+            this.SearchBlbl.Size = new System.Drawing.Size(92, 17);
+            this.SearchBlbl.TabIndex = 20;
+            this.SearchBlbl.Text = "Search Title: ";
             // 
-            // bksearchbtn
+            // SearchBtxt
             // 
-            this.bksearchbtn.Location = new System.Drawing.Point(237, 29);
-            this.bksearchbtn.Margin = new System.Windows.Forms.Padding(4);
-            this.bksearchbtn.Name = "bksearchbtn";
-            this.bksearchbtn.Size = new System.Drawing.Size(100, 28);
-            this.bksearchbtn.TabIndex = 20;
-            this.bksearchbtn.Text = "Search";
-            this.bksearchbtn.UseVisualStyleBackColor = true;
-            this.bksearchbtn.Click += new System.EventHandler(this.bksearchbtn_Click);
+            this.SearchBtxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.SearchBtxt.Location = new System.Drawing.Point(104, 31);
+            this.SearchBtxt.Name = "SearchBtxt";
+            this.SearchBtxt.Size = new System.Drawing.Size(100, 20);
+            this.SearchBtxt.TabIndex = 21;
             // 
-            // Searchlbl2
+            // Bookslbl
             // 
-            this.Searchlbl2.AutoSize = true;
-            this.Searchlbl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Searchlbl2.Location = new System.Drawing.Point(6, 36);
-            this.Searchlbl2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Searchlbl2.Name = "Searchlbl2";
-            this.Searchlbl2.Size = new System.Drawing.Size(72, 20);
-            this.Searchlbl2.TabIndex = 18;
-            this.Searchlbl2.Text = "Search: ";
+            this.Bookslbl.AutoSize = true;
+            this.Bookslbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Bookslbl.Location = new System.Drawing.Point(3, 6);
+            this.Bookslbl.Name = "Bookslbl";
+            this.Bookslbl.Size = new System.Drawing.Size(67, 25);
+            this.Bookslbl.TabIndex = 19;
+            this.Bookslbl.Text = "Books";
             // 
-            // booksearch
+            // tabPage3
             // 
-            this.booksearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.booksearch.Location = new System.Drawing.Point(95, 32);
-            this.booksearch.Margin = new System.Windows.Forms.Padding(4);
-            this.booksearch.Name = "booksearch";
-            this.booksearch.Size = new System.Drawing.Size(133, 22);
-            this.booksearch.TabIndex = 19;
+            this.tabPage3.Controls.Add(this.Tbooklbl);
+            this.tabPage3.Controls.Add(this.ABookslbl);
+            this.tabPage3.Controls.Add(this.Btitlelbl);
+            this.tabPage3.Controls.Add(this.Balancebtn);
+            this.tabPage3.Controls.Add(this.label10);
+            this.tabPage3.Controls.Add(this.label9);
+            this.tabPage3.Controls.Add(this.label8);
+            this.tabPage3.Controls.Add(this.Duedtp);
+            this.tabPage3.Controls.Add(this.Borrowdtp);
+            this.tabPage3.Controls.Add(this.Titlecb);
+            this.tabPage3.Controls.Add(this.Namecb);
+            this.tabPage3.Controls.Add(this.Duelbl);
+            this.tabPage3.Controls.Add(this.Returnbtn);
+            this.tabPage3.Controls.Add(this.Loanbtn);
+            this.tabPage3.Controls.Add(this.Borrowlbl);
+            this.tabPage3.Controls.Add(this.TitleBlbl);
+            this.tabPage3.Controls.Add(this.NameBlbl);
+            this.tabPage3.Controls.Add(this.dgvLoans);
+            this.tabPage3.Controls.Add(this.Loanslbl);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(780, 412);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Loans";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // bookslbl
+            // Tbooklbl
             // 
-            this.bookslbl.AutoSize = true;
-            this.bookslbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bookslbl.Location = new System.Drawing.Point(2, 2);
-            this.bookslbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.bookslbl.Name = "bookslbl";
-            this.bookslbl.Size = new System.Drawing.Size(84, 29);
-            this.bookslbl.TabIndex = 17;
-            this.bookslbl.Text = "Books";
+            this.Tbooklbl.AutoSize = true;
+            this.Tbooklbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tbooklbl.Location = new System.Drawing.Point(452, 214);
+            this.Tbooklbl.Name = "Tbooklbl";
+            this.Tbooklbl.Size = new System.Drawing.Size(0, 17);
+            this.Tbooklbl.TabIndex = 43;
             // 
-            // Numcopieslbl
+            // ABookslbl
             // 
-            this.Numcopieslbl.AutoSize = true;
-            this.Numcopieslbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Numcopieslbl.Location = new System.Drawing.Point(408, 164);
-            this.Numcopieslbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Numcopieslbl.Name = "Numcopieslbl";
-            this.Numcopieslbl.Size = new System.Drawing.Size(138, 20);
-            this.Numcopieslbl.TabIndex = 32;
-            this.Numcopieslbl.Text = "Avaliable Copies:";
+            this.ABookslbl.AutoSize = true;
+            this.ABookslbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ABookslbl.Location = new System.Drawing.Point(452, 242);
+            this.ABookslbl.Name = "ABookslbl";
+            this.ABookslbl.Size = new System.Drawing.Size(0, 17);
+            this.ABookslbl.TabIndex = 42;
             // 
-            // Numcopiestxt
+            // Btitlelbl
             // 
-            this.Numcopiestxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Numcopiestxt.Location = new System.Drawing.Point(566, 162);
-            this.Numcopiestxt.Margin = new System.Windows.Forms.Padding(4);
-            this.Numcopiestxt.Name = "Numcopiestxt";
-            this.Numcopiestxt.Size = new System.Drawing.Size(243, 22);
-            this.Numcopiestxt.TabIndex = 33;
+            this.Btitlelbl.AutoSize = true;
+            this.Btitlelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btitlelbl.Location = new System.Drawing.Point(452, 187);
+            this.Btitlelbl.Name = "Btitlelbl";
+            this.Btitlelbl.Size = new System.Drawing.Size(0, 17);
+            this.Btitlelbl.TabIndex = 41;
+            // 
+            // Balancebtn
+            // 
+            this.Balancebtn.Location = new System.Drawing.Point(562, 133);
+            this.Balancebtn.Name = "Balancebtn";
+            this.Balancebtn.Size = new System.Drawing.Size(105, 23);
+            this.Balancebtn.TabIndex = 40;
+            this.Balancebtn.Text = "Book Balance";
+            this.Balancebtn.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(359, 214);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(87, 17);
+            this.label10.TabIndex = 39;
+            this.label10.Text = "Total Books:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(334, 242);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(112, 17);
+            this.label9.TabIndex = 38;
+            this.label9.Text = "Available Books:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(371, 187);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(75, 17);
+            this.label8.TabIndex = 37;
+            this.label8.Text = "Book Title:";
+            // 
+            // Duedtp
+            // 
+            this.Duedtp.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.Duedtp.Location = new System.Drawing.Point(415, 139);
+            this.Duedtp.Name = "Duedtp";
+            this.Duedtp.Size = new System.Drawing.Size(121, 20);
+            this.Duedtp.TabIndex = 36;
+            // 
+            // Borrowdtp
+            // 
+            this.Borrowdtp.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.Borrowdtp.Location = new System.Drawing.Point(415, 113);
+            this.Borrowdtp.Name = "Borrowdtp";
+            this.Borrowdtp.Size = new System.Drawing.Size(121, 20);
+            this.Borrowdtp.TabIndex = 35;
+            // 
+            // Titlecb
+            // 
+            this.Titlecb.FormattingEnabled = true;
+            this.Titlecb.Location = new System.Drawing.Point(415, 86);
+            this.Titlecb.Name = "Titlecb";
+            this.Titlecb.Size = new System.Drawing.Size(121, 21);
+            this.Titlecb.TabIndex = 34;
+            // 
+            // Namecb
+            // 
+            this.Namecb.FormattingEnabled = true;
+            this.Namecb.Location = new System.Drawing.Point(415, 59);
+            this.Namecb.Name = "Namecb";
+            this.Namecb.Size = new System.Drawing.Size(121, 21);
+            this.Namecb.TabIndex = 33;
+            // 
+            // Duelbl
+            // 
+            this.Duelbl.AutoSize = true;
+            this.Duelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Duelbl.Location = new System.Drawing.Point(337, 139);
+            this.Duelbl.Name = "Duelbl";
+            this.Duelbl.Size = new System.Drawing.Size(72, 17);
+            this.Duelbl.TabIndex = 32;
+            this.Duelbl.Text = "Due Date:";
+            // 
+            // Returnbtn
+            // 
+            this.Returnbtn.Location = new System.Drawing.Point(562, 98);
+            this.Returnbtn.Name = "Returnbtn";
+            this.Returnbtn.Size = new System.Drawing.Size(105, 23);
+            this.Returnbtn.TabIndex = 29;
+            this.Returnbtn.Text = "Return Book";
+            this.Returnbtn.UseVisualStyleBackColor = true;
+            this.Returnbtn.Click += new System.EventHandler(this.Returnbtn_Click);
+            // 
+            // Loanbtn
+            // 
+            this.Loanbtn.Location = new System.Drawing.Point(562, 59);
+            this.Loanbtn.Name = "Loanbtn";
+            this.Loanbtn.Size = new System.Drawing.Size(105, 23);
+            this.Loanbtn.TabIndex = 28;
+            this.Loanbtn.Text = "Loan Book";
+            this.Loanbtn.UseVisualStyleBackColor = true;
+            this.Loanbtn.Click += new System.EventHandler(this.Loanbtn_Click);
+            // 
+            // Borrowlbl
+            // 
+            this.Borrowlbl.AutoSize = true;
+            this.Borrowlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Borrowlbl.Location = new System.Drawing.Point(319, 113);
+            this.Borrowlbl.Name = "Borrowlbl";
+            this.Borrowlbl.Size = new System.Drawing.Size(90, 17);
+            this.Borrowlbl.TabIndex = 26;
+            this.Borrowlbl.Text = "Borrow Date:";
+            // 
+            // TitleBlbl
+            // 
+            this.TitleBlbl.AutoSize = true;
+            this.TitleBlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TitleBlbl.Location = new System.Drawing.Point(334, 86);
+            this.TitleBlbl.Name = "TitleBlbl";
+            this.TitleBlbl.Size = new System.Drawing.Size(75, 17);
+            this.TitleBlbl.TabIndex = 24;
+            this.TitleBlbl.Text = "Book Title:";
+            // 
+            // NameBlbl
+            // 
+            this.NameBlbl.AutoSize = true;
+            this.NameBlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NameBlbl.Location = new System.Drawing.Point(305, 59);
+            this.NameBlbl.Name = "NameBlbl";
+            this.NameBlbl.Size = new System.Drawing.Size(104, 17);
+            this.NameBlbl.TabIndex = 22;
+            this.NameBlbl.Text = "Member Name:";
+            // 
+            // dgvLoans
+            // 
+            this.dgvLoans.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLoans.Location = new System.Drawing.Point(8, 56);
+            this.dgvLoans.Name = "dgvLoans";
+            this.dgvLoans.Size = new System.Drawing.Size(279, 274);
+            this.dgvLoans.TabIndex = 21;
+            this.dgvLoans.SelectionChanged += new System.EventHandler(this.dgvLoans_SelectionChanged);
+            // 
+            // Loanslbl
+            // 
+            this.Loanslbl.AutoSize = true;
+            this.Loanslbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Loanslbl.Location = new System.Drawing.Point(3, 5);
+            this.Loanslbl.Name = "Loanslbl";
+            this.Loanslbl.Size = new System.Drawing.Size(66, 25);
+            this.Loanslbl.TabIndex = 17;
+            this.Loanslbl.Text = "Loans";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tabControl1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -497,9 +671,12 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMembers)).EndInit();
-            this.bookstab.ResumeLayout(false);
-            this.bookstab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridBooks)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBooks)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLoans)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -508,7 +685,7 @@
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage bookstab;
+        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label Memberslbl;
         private System.Windows.Forms.TextBox Searchtxt;
@@ -525,23 +702,42 @@
         private System.Windows.Forms.Button Newbtn;
         private System.Windows.Forms.Button Clearbtn;
         private System.Windows.Forms.Button Deletebtn;
-        private System.Windows.Forms.Button Clearbooks;
-        private System.Windows.Forms.Button Dltbookbtn;
-        private System.Windows.Forms.Button Updatebkbtn;
-        private System.Windows.Forms.Button Newbookbtn;
-        private System.Windows.Forms.Label Callnumlbl;
-        private System.Windows.Forms.TextBox Callnumtxt;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox Totaltxt;
+        private System.Windows.Forms.Button ClearBbtn;
+        private System.Windows.Forms.Button DeleteBbtn;
+        private System.Windows.Forms.Button UpdateBbtn;
+        private System.Windows.Forms.Button NewBbtn;
+        private System.Windows.Forms.Label ISBNlbl;
+        private System.Windows.Forms.TextBox ISBNtxt;
+        private System.Windows.Forms.Label Titlelbl;
+        private System.Windows.Forms.TextBox Titletxt;
         private System.Windows.Forms.Label Authorlbl;
         private System.Windows.Forms.TextBox Authortxt;
-        private System.Windows.Forms.Label titlelbl;
-        private System.Windows.Forms.TextBox Titletxt;
-        private System.Windows.Forms.DataGridView dataGridBooks;
-        private System.Windows.Forms.Button bksearchbtn;
-        private System.Windows.Forms.Label Searchlbl2;
-        private System.Windows.Forms.TextBox booksearch;
-        private System.Windows.Forms.Label bookslbl;
-        private System.Windows.Forms.Label Numcopieslbl;
-        private System.Windows.Forms.TextBox Numcopiestxt;
+        private System.Windows.Forms.DataGridView dgvBooks;
+        private System.Windows.Forms.Button SearchBbtn;
+        private System.Windows.Forms.Label SearchBlbl;
+        private System.Windows.Forms.TextBox SearchBtxt;
+        private System.Windows.Forms.Label Bookslbl;
+        private System.Windows.Forms.Button Returnbtn;
+        private System.Windows.Forms.Button Loanbtn;
+        private System.Windows.Forms.Label TitleBlbl;
+        private System.Windows.Forms.Label NameBlbl;
+        private System.Windows.Forms.DataGridView dgvLoans;
+        private System.Windows.Forms.Label Loanslbl;
+        private System.Windows.Forms.Label Borrowlbl;
+        private System.Windows.Forms.Label Duelbl;
+        private System.Windows.Forms.DateTimePicker Borrowdtp;
+        private System.Windows.Forms.ComboBox Titlecb;
+        private System.Windows.Forms.ComboBox Namecb;
+        private System.Windows.Forms.DateTimePicker Duedtp;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button Balancebtn;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label Tbooklbl;
+        private System.Windows.Forms.Label ABookslbl;
+        private System.Windows.Forms.Label Btitlelbl;
     }
 }
 
