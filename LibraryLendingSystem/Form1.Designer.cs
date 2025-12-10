@@ -1,4 +1,4 @@
-﻿namespace LibraryLendingSystem
+namespace LibraryLendingSystem
 {
     partial class Form1
     {
