@@ -67,7 +67,6 @@ namespace LibraryLendingSystem
             this.Tbooklbl = new System.Windows.Forms.Label();
             this.ABookslbl = new System.Windows.Forms.Label();
             this.Btitlelbl = new System.Windows.Forms.Label();
-            this.Balancebtn = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -457,7 +456,6 @@ namespace LibraryLendingSystem
             this.tabPage3.Controls.Add(this.Tbooklbl);
             this.tabPage3.Controls.Add(this.ABookslbl);
             this.tabPage3.Controls.Add(this.Btitlelbl);
-            this.tabPage3.Controls.Add(this.Balancebtn);
             this.tabPage3.Controls.Add(this.label10);
             this.tabPage3.Controls.Add(this.label9);
             this.tabPage3.Controls.Add(this.label8);
@@ -507,15 +505,6 @@ namespace LibraryLendingSystem
             this.Btitlelbl.Name = "Btitlelbl";
             this.Btitlelbl.Size = new System.Drawing.Size(0, 17);
             this.Btitlelbl.TabIndex = 41;
-            // 
-            // Balancebtn
-            // 
-            this.Balancebtn.Location = new System.Drawing.Point(562, 133);
-            this.Balancebtn.Name = "Balancebtn";
-            this.Balancebtn.Size = new System.Drawing.Size(105, 23);
-            this.Balancebtn.TabIndex = 40;
-            this.Balancebtn.Text = "Book Balance";
-            this.Balancebtn.UseVisualStyleBackColor = true;
             // 
             // label10
             // 
@@ -732,7 +721,6 @@ namespace LibraryLendingSystem
         private System.Windows.Forms.ComboBox Namecb;
         private System.Windows.Forms.DateTimePicker Duedtp;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button Balancebtn;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label Tbooklbl;
